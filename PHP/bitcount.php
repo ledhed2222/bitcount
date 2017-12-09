@@ -9,22 +9,3 @@ function bitcount($n) {
   return count;
 }
 ?>
-
-<html>
-  <head>
-  </head>
-  <body>
-    <div>
-      <form>
-        <label>Input</label>
-        <input type="number" name="input" />
-        <input type="submit" />
-      </form>
-    </div>
-    <br />
-    <div>
-      Answer is <?php echo bitcount(intval($_GET['input'])); ?>
-    </div> 
-  </body>
-</html>
-
