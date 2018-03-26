@@ -5,3 +5,6 @@ learn a new language I write a bitcounting program :)
 
 This is a collection of bitcounting programs I've written in various languages
 over the years.
+
+*note* many of these examples were written as an experiment when learning a
+new languages, so aren't necessarily the most idiomatic possible solutions.

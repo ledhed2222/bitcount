@@ -8,7 +8,7 @@ defmodule Bitcount do
 
   defp bitcount(input) do
     bit_shifted_array(input) |> Enum.map(fn(i) ->
-      if Integer.mod(i, 2) == 0, do: 0, else: 1
+      if (i &&& 1) == 1, do: 1, else: 0
     end) |> Enum.sum
   end
 
