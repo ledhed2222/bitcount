@@ -8,37 +8,34 @@ defmodule Bitcount do
 
   defp bitcount(input) do
     bit_shifted_array(input) |> Enum.map(fn(i) ->
-      if Integer.mod(i, 2) == 0, do: 0, else: 1
+      if (i &&& 1) == 1, do: 1, else: 0
     end) |> Enum.sum
   end
 
-  defp parse_argument(input) do
-    try do
-      String.to_integer(input)
-    rescue
-      ArgumentError -> nil
+  defp parse_string_argument(input) do
+    case input |> Integer.parse do
+      {value, _} -> {:ok, value}
+      :error -> {:error, "#{input} is not a number!"}
+    end
+  end
+
+  defp fetch_command_line_input do
+    case System.argv |> Enum.fetch(0) do
+      {:ok, result} -> {:ok, result}
+      :error -> {:error, "You must enter a number!"}
     end
   end
 
   def main do
-    raw_input = case System.argv |> Enum.fetch(0) do
-      {:ok, result} -> result
-      :error -> nil
+    with {:ok, raw_input} <- fetch_command_line_input(),
+      {:ok, parsed_input} <- parse_string_argument(raw_input) do
+        IO.puts bitcount(parsed_input)
+        exit :normal
+    else
+      {:error, reason} ->
+        IO.puts reason
+        exit 1
     end
-
-    if raw_input == nil do
-      IO.puts "You must enter a number!"
-      exit 1
-    end
-
-    input = raw_input |> parse_argument
-    if input == nil do
-      IO.puts "\"#{raw_input}\" is not a number!"
-      exit 1
-    end
-
-    IO.puts bitcount(input)
-    exit :normal
   end
 end
 
