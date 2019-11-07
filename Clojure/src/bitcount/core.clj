@@ -4,10 +4,7 @@
 (defn- bit-shifted-array
   [input]
   (map
-    (fn [i]
-      (if (= i 0)
-        input
-        (int (Math/floor (/ input (* 2 i))))))
+    #(bit-shift-right input %)
     (range 32)))
 
 (defn- bitcount
