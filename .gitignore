@@ -1,5 +1,6 @@
 .DS_Store
 *.pyc
 *.class
-
+Clojure/target
+Clojure/.*
 
