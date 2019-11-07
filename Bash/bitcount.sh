@@ -2,8 +2,8 @@
 input=$1
 if [[ -z "$input" ]]
 then
-	echo "You must enter a number!"
-	exit 1
+  echo "You must enter a number!"
+  exit 1
 fi
 
 if ! [[ $input =~ ^-?[0-9]+$ ]]
@@ -15,11 +15,11 @@ fi
 count=0
 for i in {0..31}
 do
-	if (( $input & 1 ))  
-	then
-		let "count += 1"
-	fi
-	let "input = input >> 1"
+  if (( $input & 1 ))  
+  then
+    let "count += 1"
+  fi
+  let "input = input >> 1"
 done
 echo $count
 
