@@ -17,7 +17,6 @@ end
 def parse(argument)
   Integer(argument)
 rescue ArgumentError
-  nil
 end
 
 def bitcount(input)
