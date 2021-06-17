@@ -6,6 +6,9 @@ import (
 	"strconv"
 )
 
+// bits not BITS because private
+const bits int = 64
+
 func main() {
 	if len(os.Args) < 2 {
 		fmt.Println("You must supply a value!")
@@ -22,7 +25,7 @@ func main() {
 }
 
 func bitCount(value int) (result int) {
-	for i := 0; i < 32; i++ {
+	for i := 0; i < bits; i++ {
 		if (value & 1) == 1 {
 			result++
 		}

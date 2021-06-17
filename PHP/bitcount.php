@@ -1,5 +1,7 @@
 #! /usr/bin/env php
 <?php
+$BITS = 64;
+
 function main($argv) {
   if (count($argv) < 2) {
     echo "You must enter a number!\n";
@@ -16,8 +18,9 @@ function main($argv) {
 }
 
 function bitcount($n) {
+  global $BITS;
   $count = 0;
-  for ($i = 0; $i < 32; $i++) {
+  for ($i = 0; $i < $BITS; $i++) {
     if ($n & 1) {
       $count++;
     }
@@ -27,4 +30,3 @@ function bitcount($n) {
 }
 
 main($argv);
-

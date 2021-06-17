@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+BITS = 64
+
 def main
   if ARGV.empty?
     puts "You must enter a number!"
@@ -20,10 +22,9 @@ rescue ArgumentError
 end
 
 def bitcount(input)
-  32.times.map do |i|
+  BITS.times.map do |i|
     ((input >> i) & 1) == 1 ? 1 : 0
   end.sum
 end
 
 main
-

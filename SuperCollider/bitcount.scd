@@ -1,7 +1,8 @@
 (
-var bitcount = { arg n;
+~bitcount = { arg n;
+  var bits = 64;
 	var count = 0;
-	32.do {
+	bits.do {
 		if (n % 2 == 1) {
 			count = count + 1;
 		};
