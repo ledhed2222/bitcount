@@ -1,11 +1,13 @@
 (ns bitcount.core
   (:gen-class))
 
+(def ^{:private true} BITS 64)
+
 (defn- bit-shifted-array
   [input]
   (map
     #(bit-shift-right input %)
-    (range 32)))
+    (range BITS)))
 
 (defn- bitcount
   [input]
@@ -30,4 +32,3 @@
       (do
         (println parsed-input)
         (System/exit 1)))))
-

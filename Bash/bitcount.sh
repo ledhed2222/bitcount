@@ -1,4 +1,6 @@
 #!/bin/bash
+BITS=64
+
 input=$1
 if [[ -z "$input" ]]
 then
@@ -13,7 +15,7 @@ then
 fi
 
 count=0
-for i in {0..31}
+for (( i = 0; i < $BITS; i++ ))
 do
   if (( $input & 1 ))  
   then
@@ -22,4 +24,3 @@ do
   let "input = input >> 1"
 done
 echo $count
-

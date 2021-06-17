@@ -1,4 +1,6 @@
 #! /usr/bin/env node
+const BITS = 64;
+
 const main = () => {
   const raw = process.argv[2]
   if (!raw) {
@@ -17,7 +19,7 @@ const main = () => {
 
 const bitcount = (n) => {
   let count = 0;
-  for (let i = 0; i < 32; i++) {
+  for (let i = 0; i < BITS; i++) {
     if (n & 1 === 1) {
       count++;
     }
@@ -27,4 +29,3 @@ const bitcount = (n) => {
 };
 
 main();
-

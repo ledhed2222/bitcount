@@ -2,16 +2,19 @@
 #include <stdlib.h>
 #include <errno.h>
 
-int bitcount(int input) {
+static const int BITS = 64;
+
+static int bitcount(int input) {
 	int neg = input < 0 ? 1 : 0;
 	input = neg ? (input * -1) - 1 : input;
 	int count = 0;
-	for (int i = 0; i < 32; i++) {
-		if (input & 1)
+	for (int i = 0; i < BITS; i++) {
+		if (input & 1) {
 			count++;
+    }
 		input = input >> 1;
 	}
-	return neg ? 32 - count : count;
+	return neg ? BITS - count : count;
 }
 
 int main(int argc, char* argv[]) {

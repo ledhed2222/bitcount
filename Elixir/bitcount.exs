@@ -2,8 +2,22 @@
 defmodule Bitcount do
   use Bitwise
 
+  @bits 64
+
+  def main do
+    with {:ok, raw_input} <- fetch_command_line_input(),
+      {:ok, parsed_input} <- parse_string_argument(raw_input) do
+        IO.puts bitcount(parsed_input)
+        exit :normal
+    else
+      {:error, reason} ->
+        IO.puts reason
+        exit 1
+    end
+  end
+
   defp bit_shifted_array(input) do
-    0..31 |> Enum.map(fn(i) -> input >>> i end)
+    0..(@bits-1) |> Enum.map(fn(i) -> input >>> i end)
   end
 
   defp bitcount(input) do
@@ -25,19 +39,6 @@ defmodule Bitcount do
       :error -> {:error, "You must enter a number!"}
     end
   end
-
-  def main do
-    with {:ok, raw_input} <- fetch_command_line_input(),
-      {:ok, parsed_input} <- parse_string_argument(raw_input) do
-        IO.puts bitcount(parsed_input)
-        exit :normal
-    else
-      {:error, reason} ->
-        IO.puts reason
-        exit 1
-    end
-  end
 end
 
 Bitcount.main
-
